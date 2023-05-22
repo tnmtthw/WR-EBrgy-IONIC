@@ -1,8 +1,12 @@
 import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Menu from './components/Menu';
-import Page from './pages/Page';
+import Home from './pages/Home';
+import Login from './pages/Login/Login';
+import Signup from './pages/Signup/Signup';
+import Profile from './pages/Profile/Profile';
+
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -25,24 +29,22 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App: React.FC = () => {
-  return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/folder/Inbox" />
-            </Route>
-            <Route path="/folder/:name" exact={true}>
-              <Page />
-            </Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
-  );
-};
+const App: React.FC = () => (
+  <IonApp>
+    <IonReactRouter>
+      <IonSplitPane contentId="main">
+        <Menu />
+        <IonRouterOutlet id="main">
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/" render={() => <Redirect to="/login" />} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/folder/facebook" component={() => { window.location.href = 'https://www.facebook.com/UrSerBisWR/'; return null; }} />
+        </IonRouterOutlet>
+      </IonSplitPane>
+    </IonReactRouter>
+  </IonApp>
+);
 
 export default App;
