@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonToast, IonCard, IonCardContent } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
+import './Signup.css';
 
 const Signup: React.FC = () => {
   const history = useHistory();
@@ -73,30 +74,39 @@ const Signup: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="ion-padding">
+      <div className="logo-container">
+
+<img src='src/assets/img/Logo.png'alt="Logo" className="logo" />
+    </div>
         <IonCard>
+          
           <IonCardContent>
+            
             <h1>Register</h1>
-            <p>Create an Account</p>
+            <h2>Create an Account</h2>
             <IonInput
               label="Firstname"
               placeholder="Firstname"
               value={firstName}
               labelPlacement="floating"
               onIonChange={(e) => setFirstName(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
             <IonInput
               label="Lastname"
               placeholder="Lastname"
               value={lastName}
-              labelPlacement="floating"
+              // labelPlacement="floating"
               onIonChange={(e) => setLastName(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
             <IonInput
               label="Email"
               placeholder="Email"
               value={email}
-              labelPlacement="floating"
+              // labelPlacement="floating"
               onIonChange={(e) => setEmail(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
             <IonInput
               label="Contact"
@@ -105,6 +115,7 @@ const Signup: React.FC = () => {
               value={contactNumber}
               labelPlacement="floating"
               onIonChange={(e) => setContactNumber(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
             <IonInput
               label="Birthday"
@@ -112,6 +123,7 @@ const Signup: React.FC = () => {
               value={birthdate}
               labelPlacement="floating"
               onIonChange={(e) => setBirthdate(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
             <IonSelect
               label="Gender"
@@ -119,6 +131,7 @@ const Signup: React.FC = () => {
               value={gender}
               labelPlacement="floating"
               onIonChange={(e) => setGender(e.detail.value)}
+              className="custom-input" // Apply the custom class here
             >
               <IonSelectOption value="Male">Male</IonSelectOption>
               <IonSelectOption value="Female">Female</IonSelectOption>
@@ -131,6 +144,7 @@ const Signup: React.FC = () => {
               value={houseNumber}
               labelPlacement="floating"
               onIonChange={(e) => setHouseNumber(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
             <IonInput
               label="Street Name"
@@ -138,6 +152,7 @@ const Signup: React.FC = () => {
               value={streetNumber}
               labelPlacement="floating"
               onIonChange={(e) => setStreetNumber(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
             <IonInput
               label="Sitio"
@@ -145,6 +160,7 @@ const Signup: React.FC = () => {
               value={sitio}
               labelPlacement="floating"
               onIonChange={(e) => setSitio(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
             <h3>Create Password</h3>
             <IonInput
@@ -154,10 +170,21 @@ const Signup: React.FC = () => {
               value={password}
               labelPlacement="floating"
               onIonChange={(e) => setPassword(e.detail.value!)}
+              className="custom-input" // Apply the custom class here
             />
-            <IonButton expand="block" onClick={handleSignup}>
-              Signup
-            </IonButton>
+             
+             <div className="button-container">
+                <button onClick={handleSignup} className="btn1">
+                  Submit
+                </button>
+              </div>
+              
+              <div className="text-center">
+                
+                  <p> Already have an Account? </p>
+                  <a href="/signup">Sign in here</a>
+                
+              </div>
           </IonCardContent>
         </IonCard>
       </IonContent>

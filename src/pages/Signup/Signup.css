@@ -29,12 +29,27 @@ input-label-placement-floating.sc-ion-input-ios-h, .input-label-placement-stacke
 }
 
 ion-card-content {
-  width: 300px;
+  width: 330px;
   display: block;
   position: relative;
   background: rgba(17, 68, 124, 0.8);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust the shadow properties as needed */
 }
+        ion-card-content h3 {
+        color:White;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        }
+        ion-card-content h2 {
+            color:White;
+            padding-bottom: 20px;
+            padding-left: 10px;
+            text-transform: uppercase;
+            padding-top: 20px;
+            }
+  
+  
+
 
 .card-content-ios h1 {
   color:white;

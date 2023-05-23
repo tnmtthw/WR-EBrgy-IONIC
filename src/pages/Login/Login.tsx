@@ -65,38 +65,54 @@ const Login: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="ion-padding">
+        
+      <div className="logo-container">
+      
+          <img src='src/assets/img/Logo.png'alt="Logo" className="logo" />
+              </div>
         <div className="container">
           <IonCard>
             <IonCardContent>
+             
               <h1>Login</h1>
-              <p>Sign in your account</p>
+              
               <IonInput
-                label="Email"
+                // label="Email"
                 type="email"
                 value={email}
-                labelPlacement="floating"
-                placeholder="Email"
+                // labelPlacement="floating"
+                fill="solid"
+                placeholder="Enter Email"
                 onIonChange={e => setEmail(e.detail.value!)}
+                className="custom-input" // Apply the custom class here
               ></IonInput>
+
               <IonInput
-                label="Password"
+                // label="Password"
                 type="password"
-                placeholder="Password"
+                placeholder="Enter Password"
                 value={password}
-                labelPlacement="floating"
+                // labelPlacement="floating"
                 onIonChange={e => setPassword(e.detail.value!)}
+                className="custom-input" // Apply the custom class here
               ></IonInput>
-              <IonButton expand="block" onClick={handleLogin}>
-                Login
-              </IonButton>
-              <IonText>
-                Don't have an account? <a href="/signup">Sign up</a>
-              </IonText>
+              
+              <div className="button-container">
+                <button onClick={handleLogin} className="btn1">
+                  Submit
+                </button>
+              </div>
+            
+              <div className="text-center">
+                <IonText>
+                  <p> Don't have an account? </p>
+                  <a href="/signup">Sign up here</a>
+                </IonText>
+              </div>
             </IonCardContent>
           </IonCard>
         </div>
       </IonContent>
-      <IonToast isOpen={showToast} message={toastMessage} duration={2000} onDidDismiss={handleToastClose} />
     </IonPage>
   );
 };
