@@ -28,6 +28,7 @@ const Login: React.FC = () => {
         const gender = user.gender;
         const houseNumber = user.houseNumber;
         const streetNumber = user.streetNumber;
+        const sitio = user.sitio;
   
         // Save the new user's data to localStorage
         localStorage.setItem('firstName', firstName);
@@ -35,6 +36,7 @@ const Login: React.FC = () => {
         localStorage.setItem('gender', gender);
         localStorage.setItem('houseNumber', houseNumber);
         localStorage.setItem('streetNumber', streetNumber);
+        localStorage.setItem('sitio', sitio);
         localStorage.setItem('access_token', access_token);
   
         setEmail('');
@@ -84,7 +86,7 @@ const Login: React.FC = () => {
                 labelPlacement="floating"
                 onIonChange={e => setPassword(e.detail.value!)}
               ></IonInput>
-              <IonButton expand="full" onClick={handleLogin}>
+              <IonButton expand="block" onClick={handleLogin}>
                 Login
               </IonButton>
               <IonText>

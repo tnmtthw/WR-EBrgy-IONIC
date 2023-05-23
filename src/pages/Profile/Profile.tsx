@@ -135,7 +135,7 @@ const Profile: React.FC = () => {
                 labelPlacement="floating"
                 onIonChange={(e) => setSitio(e.detail.value!)}
               />
-              <IonButton type="submit">Submit</IonButton>
+              <IonButton expand="block" type="submit">Submit</IonButton>
             </IonCardContent>
           </IonCard>
         </form>

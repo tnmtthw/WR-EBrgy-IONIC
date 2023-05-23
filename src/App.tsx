@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Profile from './pages/Profile/Profile';
+import Document from './pages/Document/Document';
+import Docu1_BarangayID from './pages/Document/Docu1_BarangayID';
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -38,6 +40,8 @@ const App: React.FC = () => (
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/document" component={Document} />
+          <Route exact path="/Docu1_BarangayID" component={Docu1_BarangayID} />
           <Route exact path="/" render={() => <Redirect to="/login" />} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/folder/facebook" component={() => { window.location.href = 'https://www.facebook.com/UrSerBisWR/'; return null; }} />

@@ -155,7 +155,7 @@ const Signup: React.FC = () => {
               labelPlacement="floating"
               onIonChange={(e) => setPassword(e.detail.value!)}
             />
-            <IonButton expand="full" onClick={handleSignup}>
+            <IonButton expand="block" onClick={handleSignup}>
               Signup
             </IonButton>
           </IonCardContent>
