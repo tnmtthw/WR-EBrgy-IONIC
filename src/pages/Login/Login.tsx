@@ -84,7 +84,7 @@ const Login: React.FC = () => {
                 labelPlacement="floating"
                 onIonChange={e => setPassword(e.detail.value!)}
               ></IonInput>
-              <IonButton expand="full" onClick={handleLogin}>
+              <IonButton expand="block" onClick={handleLogin}>
                 Login
               </IonButton>
               <IonText>
