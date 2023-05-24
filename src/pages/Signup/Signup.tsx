@@ -96,7 +96,7 @@ const Signup: React.FC = () => {
               label="Lastname"
               placeholder="Lastname"
               value={lastName}
-              // labelPlacement="floating"
+              labelPlacement="floating"
               onIonChange={(e) => setLastName(e.detail.value!)}
               className="custom-input" // Apply the custom class here
             />
@@ -104,7 +104,7 @@ const Signup: React.FC = () => {
               label="Email"
               placeholder="Email"
               value={email}
-              // labelPlacement="floating"
+              labelPlacement="floating"
               onIonChange={(e) => setEmail(e.detail.value!)}
               className="custom-input" // Apply the custom class here
             />

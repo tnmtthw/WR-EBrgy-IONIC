@@ -77,10 +77,10 @@ const Login: React.FC = () => {
               <h1>Login</h1>
               
               <IonInput
-                // label="Email"
+                label="Email"
                 type="email"
                 value={email}
-                // labelPlacement="floating"
+                labelPlacement="floating"
                 fill="solid"
                 placeholder="Enter Email"
                 onIonChange={e => setEmail(e.detail.value!)}
@@ -88,11 +88,11 @@ const Login: React.FC = () => {
               ></IonInput>
 
               <IonInput
-                // label="Password"
+                label="Password"
                 type="password"
                 placeholder="Enter Password"
                 value={password}
-                // labelPlacement="floating"
+                labelPlacement="floating"
                 onIonChange={e => setPassword(e.detail.value!)}
                 className="custom-input" // Apply the custom class here
               ></IonInput>
