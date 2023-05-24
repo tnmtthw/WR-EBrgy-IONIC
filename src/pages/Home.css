@@ -1,0 +1,43 @@
+.ion-padding h1{
+    color:black;
+    text-align: center;
+    font-weight: bold;
+}
+.logo-container2 img{
+    width: 100px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.logo {
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 90px;
+
+  }
+ .header h1{
+    color:white;
+    font-size: 20px;
+    text-transform: uppercase;
+ }
+ .button1 button{
+    height: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color:#001D3D;
+    margin-left: 35px;
+    margin-bottom: 20px;
+    padding-left: 70px;
+    padding-right: 80px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    
+    
+ }
+ .IonCard{
+    background-color: white;
+ }
+ 

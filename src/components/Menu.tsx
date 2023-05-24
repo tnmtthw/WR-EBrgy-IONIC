@@ -26,6 +26,7 @@ const appPages: AppPage[] = [
     url: '/home',
     iosIcon: homeOutline,
     mdIcon: homeSharp,
+   
   },
   {
     title: 'Profile',
@@ -70,16 +71,20 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonList id="inbox-list">
-          <IonListHeader>West Rembo E-BRGY</IonListHeader>
-          <IonNote>UrSerBisWR/</IonNote>
+        <IonList id="inbox-list"style={{ backgroundColor: '#FFC300' }}>
+        <div className="logo-container">
+
+          <img src='src/assets/img/Logo.png'alt="Logo" className="logo" />
+              </div>
           {appPages.map((appPage, index) => (
-            <IonMenuToggle key={index} autoHide={false} onClick={appPage.title === 'Logout' ? handleLogout : undefined}>
-              <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
-                <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
-                <IonLabel>{appPage.title}</IonLabel>
-              </IonItem>
+            <IonList id="inbox-list" className="list">
+                 <IonMenuToggle key={index} autoHide={false} onClick={appPage.title === 'Logout' ? handleLogout : undefined}>
+                  <IonItem className={`menu-list ${location.pathname === appPage.url ? 'selected' : ''}`} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
+                    <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
+                    <IonLabel>{appPage.title}</IonLabel>
+                  </IonItem>
             </IonMenuToggle>
+            </IonList>
           ))}
         </IonList>
       </IonContent>

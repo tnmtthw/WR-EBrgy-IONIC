@@ -67,15 +67,13 @@ const Login: React.FC = () => {
       <IonContent className="ion-padding">
         
       <div className="logo-container">
-      
+
           <img src='src/assets/img/Logo.png'alt="Logo" className="logo" />
               </div>
         <div className="container">
           <IonCard>
             <IonCardContent>
-             
               <h1>Login</h1>
-              
               <IonInput
                 label="Email"
                 type="email"

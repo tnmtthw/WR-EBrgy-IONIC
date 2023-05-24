@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
-
+import './Home.css';
 const Home: React.FC = () => {
   const history = useHistory();
 
@@ -48,18 +48,20 @@ const Home: React.FC = () => {
           Access and update your profile information.
         </IonCardContent>
       </IonCard>
-
-      <IonCard onClick={goToDocumentPage}>
+    
+      <IonCard onClick={goToDocumentPage}style={{ backgroundColor: '#C79C0E' }}>
         <IonCardHeader>
-          <IonCardSubtitle>Click to view</IonCardSubtitle>
-          <IonCardTitle>Document</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          Explore and manage your documents here.
-        </IonCardContent>
-      </IonCard>
-
-      <IonCard onClick={goToProfilePage}>
+        <div className="logo-container2">
+          <img src='src/assets/img/docu.png'alt="Logo" className="logo" />
+        </div>
+          <div className="header">
+            <h1> Request Documents</h1>
+           </div>
+          </IonCardHeader>
+          <div className="button1">  <button>Request Now</button> </div>
+        </IonCard>
+      
+      <IonCard onClick={goToProfilePage}style={{ backgroundColor: '#C79C0E' }}>
         <IonCardHeader>
           <IonCardSubtitle>Click to view</IonCardSubtitle>
           <IonCardTitle>Help Desk</IonCardTitle>
