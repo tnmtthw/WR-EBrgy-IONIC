@@ -2,7 +2,7 @@ import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/r
 import { IonReactRouter } from '@ionic/react-router';
 import { Route, Redirect } from 'react-router-dom';
 import Menu from './components/Menu';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Profile from './pages/Profile/Profile';
@@ -28,6 +28,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Main from './pages/Main';
 
 setupIonicReact();
 
@@ -37,13 +38,14 @@ const App: React.FC = () => (
       <IonSplitPane contentId="main">
         <Menu />
         <IonRouterOutlet id="main">
+          <Route exact path="/main" component={Main} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/document" component={Document} />
           <Route exact path="/Docu1_BarangayID" component={Docu1_BarangayID} />
-          <Route exact path="/" render={() => <Redirect to="/login" />} />
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/" render={() => <Redirect to="/main" />} />
           <Route exact path="/folder/facebook" component={() => { window.location.href = 'https://www.facebook.com/UrSerBisWR/'; return null; }} />
         </IonRouterOutlet>
       </IonSplitPane>

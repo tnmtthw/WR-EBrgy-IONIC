@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { IonButtons, IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonToast, IonCard, IonCardContent, IonHeader, IonToolbar, IonMenuButton, IonTitle } from '@ionic/react';
+import { IonButtons, IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonToast, IonCard, IonCardContent, IonHeader, IonToolbar, IonBackButton, IonTitle } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
+import styles from './Profile.module.css';
+import { useForm } from 'react-hook-form';
 
 const Profile: React.FC = () => {
+  const { handleSubmit } = useForm();
   const history = useHistory();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -11,38 +14,35 @@ const Profile: React.FC = () => {
   const [houseNumber, setHouseNumber] = useState('');
   const [streetNumber, setStreetNumber] = useState('');
   const [sitio, setSitio] = useState('');
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
 
   useEffect(() => {
-    // Retrieve the user's data from local storage
-    const storedFirstName = localStorage.getItem('firstName');
-    const storedLastName = localStorage.getItem('lastName');
-    const storedGender = localStorage.getItem('gender');
-    const storedHouseNumber = localStorage.getItem('houseNumber');
-    const storedStreetNumber = localStorage.getItem('streetNumber');
-    const storedSitio = localStorage.getItem('sitio');
-
-    if (storedFirstName) {
-      setFirstName(storedFirstName);
-    }
-    if (storedLastName) {
-      setLastName(storedLastName);
-    }
-    if (storedGender) {
-      setGender(storedGender);
-    }
-    if (storedHouseNumber) {
-      setHouseNumber(storedHouseNumber);
-    }
-    if (storedStreetNumber) {
-      setStreetNumber(storedStreetNumber);
-    }
-    if (storedSitio) {
-      setSitio(storedSitio);
-    }
+    fetchProfileData();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const fetchProfileData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/api/profile', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const userData = response.data;
+      setFirstName(userData.firstName);
+      setLastName(userData.lastName);
+      setGender(userData.gender);
+      setHouseNumber(userData.houseNumber);
+      setStreetNumber(userData.streetNumber);
+      setSitio(userData.sitio);
+    } catch (error) {
+      console.error('Error fetching profile data', error);
+    }
+  };
+
+  const update = async () => {
     try {
       const userData = {
         firstName: firstName,
@@ -53,38 +53,44 @@ const Profile: React.FC = () => {
         sitio: sitio,
       };
 
-      // Save the user's data to local storage
-      localStorage.setItem('firstName', firstName);
-      localStorage.setItem('lastName', lastName);
-      localStorage.setItem('gender', gender);
-      localStorage.setItem('houseNumber', houseNumber);
-      localStorage.setItem('streetNumber', streetNumber);
-      localStorage.setItem('sitio', sitio);
+      console.log('Firstname:', firstName);
+      console.log('Lastname', lastName);
+      console.log('Gender:', gender);
+      console.log('House Number:', houseNumber);
+      console.log('Street Number:', streetNumber);
+      console.log('Sitio:', sitio);
+  
+      await axios.put('http://localhost:8000/api/update', userData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          'Content-Type': 'application/json',
+        },
+      });
 
-      // Send the form data to the server using axios
-      await axios.post('/api/profile', userData);
+      setToastMessage('Profile updated successfully!');
+      setShowToast(true);
 
-      // Optionally, show a success message or redirect to another page
-      console.log('Profile data submitted successfully');
-      history.push('/dashboard'); // Replace '/dashboard' with the desired redirect URL
+      history.push('/profile');
     } catch (error) {
-      // Handle the error here
       console.error('Error submitting profile data', error);
+
+      setToastMessage('Failed to update profile.');
+      setShowToast(true);
     }
-  };
+  };  
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            <IonBackButton defaultHref="/Home" text="Home"></IonBackButton>
           </IonButtons>
-          <IonTitle>Profile</IonTitle>
+          <IonTitle>PROFILE</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(update)}>
           <IonCard>
             <IonCardContent>
               <IonInput
@@ -93,6 +99,7 @@ const Profile: React.FC = () => {
                 value={firstName}
                 labelPlacement="floating"
                 onIonChange={(e) => setFirstName(e.detail.value!)}
+                className="custom-input"
               />
               <IonInput
                 label="Lastname"
@@ -100,6 +107,7 @@ const Profile: React.FC = () => {
                 value={lastName}
                 labelPlacement="floating"
                 onIonChange={(e) => setLastName(e.detail.value!)}
+                className="custom-input"
               />
               <IonSelect
                 justify='start'
@@ -108,6 +116,7 @@ const Profile: React.FC = () => {
                 value={gender}
                 labelPlacement="floating"
                 onIonChange={(e) => setGender(e.detail.value)}
+                className="custom-input"
               >
                 <IonSelectOption value="Male">Male</IonSelectOption>
                 <IonSelectOption value="Female">Female</IonSelectOption>
@@ -120,6 +129,7 @@ const Profile: React.FC = () => {
                 value={houseNumber}
                 labelPlacement="floating"
                 onIonChange={(e) => setHouseNumber(e.detail.value!)}
+                className="custom-input"
               />
               <IonInput
                 label="Street Number"
@@ -127,6 +137,7 @@ const Profile: React.FC = () => {
                 value={streetNumber}
                 labelPlacement="floating"
                 onIonChange={(e) => setStreetNumber(e.detail.value!)}
+                className="custom-input"
               />
               <IonInput
                 label="Sitio"
@@ -134,11 +145,22 @@ const Profile: React.FC = () => {
                 value={sitio}
                 labelPlacement="floating"
                 onIonChange={(e) => setSitio(e.detail.value!)}
+                className="custom-input"
               />
-              <IonButton expand="block" type="submit">Submit</IonButton>
+              <div className="button-container">
+                <button type="submit" className="btn1">
+                  Submit
+                </button>
+              </div>
             </IonCardContent>
           </IonCard>
         </form>
+        <IonToast
+          isOpen={showToast}
+          message={toastMessage}
+          duration={3000}
+          onDidDismiss={() => setShowToast(false)}
+        />
       </IonContent>
     </IonPage>
   );

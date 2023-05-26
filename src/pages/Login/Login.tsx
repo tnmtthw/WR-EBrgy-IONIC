@@ -1,87 +1,109 @@
 import React, { useState } from 'react';
-import { IonContent, IonInput, IonButton, IonText, IonPage, IonToast, IonCard, IonCardContent } from '@ionic/react';
+import {
+  IonContent,
+  IonInput,
+  IonText,
+  IonPage,
+  IonToast,
+  IonCard,
+  IonCardContent,
+  IonLoading,
+  IonBackButton
+} from '@ionic/react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import './login.css';
+import styles from './Login.module.css';
+import { useForm } from 'react-hook-form';
 
 const Login: React.FC = () => {
+  const { handleSubmit } = useForm();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
   const history = useHistory();
 
-  const handleLogin = () => {
+  const login = async () => {
+    setIsLoading(true); // Start loading
+
     // Clear previous user's data from localStorage
     localStorage.removeItem('firstName');
-    localStorage.removeItem('access_token');
-  
-    axios
-      .post('http://localhost:8000/api/login', {
+    localStorage.removeItem('lastName');
+    localStorage.removeItem('gender');
+    localStorage.removeItem('houseNumber');
+    localStorage.removeItem('streetNumber');
+    localStorage.removeItem('sitio');
+    localStorage.removeItem('accessToken');
+
+    console.log('Email:', email);
+    console.log('Password:', password);
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/login', {
         email: email,
         password: password,
-      })
-      .then(response => {
-        const { user, access_token } = response.data;
-        const firstName = user.firstName;
-        const lastName = user.lastName;
-        const gender = user.gender;
-        const houseNumber = user.houseNumber;
-        const streetNumber = user.streetNumber;
-        const sitio = user.sitio;
-  
-        // Save the new user's data to localStorage
-        localStorage.setItem('firstName', firstName);
-        localStorage.setItem('lastName', lastName);
-        localStorage.setItem('gender', gender);
-        localStorage.setItem('houseNumber', houseNumber);
-        localStorage.setItem('streetNumber', streetNumber);
-        localStorage.setItem('sitio', sitio);
-        localStorage.setItem('access_token', access_token);
-  
-        setEmail('');
-        setPassword('');
-        // Navigate to the desired page
-        history.push('/Home');
-  
-        // Show success toast message
-        setToastMessage('Login successful');
-        setShowToast(true);
-      })
-      .catch(error => {
-        // Handle login error
-        console.error('Login failed:', error);
-  
-        // Show error toast message
-        setToastMessage('Login failed');
-        setShowToast(true);
       });
-  };
-  
-  const handleToastClose = () => {
-    setShowToast(false);
+
+      const { user, accessToken } = response.data;
+      const firstName = user.firstName;
+      const lastName = user.lastName;
+      const gender = user.gender;
+      const houseNumber = user.houseNumber;
+      const streetNumber = user.streetNumber;
+      const sitio = user.sitio;
+
+      // Save the new user's data to localStorage
+      localStorage.setItem('firstName', firstName);
+      localStorage.setItem('lastName', lastName);
+      localStorage.setItem('email', email);
+      console.log(localStorage.getItem('email'));
+      localStorage.setItem('gender', gender);
+      localStorage.setItem('houseNumber', houseNumber);
+      localStorage.setItem('streetNumber', streetNumber);
+      localStorage.setItem('sitio', sitio);
+      localStorage.setItem('accessToken', accessToken);
+      console.log(localStorage.getItem('accessToken'));
+
+      setEmail('');
+      setPassword('');
+      // Navigate to the desired page
+      history.push('/Home');
+
+      // Show success toast message
+      setToastMessage('Login successful');
+      setShowToast(true);
+    } catch (error) {
+      // Handle login error
+      console.error('Login failed:', error);
+
+      // Show error toast message
+      setToastMessage('Login failed');
+      setShowToast(true);
+    } finally {
+      setIsLoading(false); // Stop loading
+    }
   };
 
   return (
     <IonPage>
       <IonContent className="ion-padding">
-        
-      <div className="logo-container">
-
-          <img src='src/assets/img/Logo.png'alt="Logo" className="logo" />
-              </div>
+        <div className="logo-container">
+          <img src="src/assets/img/Logo.png" alt="Logo" className="logo" />
+        </div>
         <div className="container">
           <IonCard>
             <IonCardContent>
-              <h1>Login</h1>
+            <IonBackButton defaultHref="/" text=""></IonBackButton>
+              <h1>LOGIN</h1>
+              <form onSubmit={handleSubmit(login)}>
               <IonInput
                 label="Email"
                 type="email"
                 value={email}
                 labelPlacement="floating"
-                fill="solid"
                 placeholder="Enter Email"
-                onIonChange={e => setEmail(e.detail.value!)}
+                onIonChange={(e) => setEmail(e.detail.value!)}
                 className="custom-input" // Apply the custom class here
               ></IonInput>
 
@@ -91,26 +113,32 @@ const Login: React.FC = () => {
                 placeholder="Enter Password"
                 value={password}
                 labelPlacement="floating"
-                onIonChange={e => setPassword(e.detail.value!)}
+                onIonChange={(e) => setPassword(e.detail.value!)}
                 className="custom-input" // Apply the custom class here
               ></IonInput>
-              
+
               <div className="button-container">
-                <button onClick={handleLogin} className="btn1">
+                <button type="submit" className="btn1">
                   Submit
                 </button>
               </div>
-            
-              <div className="text-center">
-                <IonText>
-                  <p> Don't have an account? </p>
-                  <a href="/signup">Sign up here</a>
-                </IonText>
-              </div>
+              </form>
             </IonCardContent>
           </IonCard>
         </div>
       </IonContent>
+      <IonLoading
+        isOpen={isLoading}
+        message="Loading..."
+        duration={3000}
+        spinner="circles"
+      />
+      <IonToast
+        isOpen={showToast}
+        message={toastMessage}
+        duration={3000}
+        onDidDismiss={() => setShowToast(false)}
+      />
     </IonPage>
   );
 };

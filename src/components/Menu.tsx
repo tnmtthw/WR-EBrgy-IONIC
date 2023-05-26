@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import {
   IonContent,
   IonIcon,
@@ -10,8 +11,18 @@ import {
   IonNote,
 } from '@ionic/react';
 import { useLocation } from 'react-router-dom';
-import { homeOutline, homeSharp, personOutline, personSharp, logoFacebook, documentOutline, documentSharp, logOutOutline, logOutSharp } from 'ionicons/icons';
-import './Menu.css';
+import {
+  homeOutline,
+  homeSharp,
+  personOutline,
+  personSharp,
+  logoFacebook,
+  documentOutline,
+  documentSharp,
+  logOutOutline,
+  logOutSharp,
+} from 'ionicons/icons';
+import styles from './Menu.module.css';
 
 interface AppPage {
   title: string;
@@ -26,7 +37,6 @@ const appPages: AppPage[] = [
     url: '/home',
     iosIcon: homeOutline,
     mdIcon: homeSharp,
-   
   },
   {
     title: 'Profile',
@@ -65,26 +75,41 @@ const Menu: React.FC = () => {
     localStorage.removeItem('houseNumber');
     localStorage.removeItem('streetNumber');
     localStorage.removeItem('sitio');
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('accessToken');
   };
+
+  const [firstName, setFirstName] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedFirstName = localStorage.getItem('firstName');
+    const storedEmail = localStorage.getItem('email');
+
+    if (storedFirstName) {
+      setFirstName(storedFirstName);
+    }
+    if (storedEmail) {
+      setEmail(storedEmail);
+    }
+  }, []);
 
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonList id="inbox-list"style={{ backgroundColor: '#FFC300' }}>
-        <div className="logo-container">
-
-          <img src='src/assets/img/Logo.png'alt="Logo" className="logo" />
-              </div>
+        <IonList id="inbox-list" className={styles['menu-list']} style={{ backgroundColor: '#FFC300' }}>
+          <div className="logo-container">
+            <img src="src/assets/img/Logo.png" alt="Logo" className="logo" />
+          </div>
+          <h1>Welcome, {firstName}!</h1>
+          <p>{email}</p>
           {appPages.map((appPage, index) => (
-            <IonList id="inbox-list" className="list">
-                 <IonMenuToggle key={index} autoHide={false} onClick={appPage.title === 'Logout' ? handleLogout : undefined}>
-                  <IonItem className={`menu-list ${location.pathname === appPage.url ? 'selected' : ''}`} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
-                    <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
-                    <IonLabel>{appPage.title}</IonLabel>
-                  </IonItem>
+            <IonMenuToggle key={index} autoHide={false} onClick={appPage.title === 'Logout' ? handleLogout : undefined}>
+              <IonItem className={`${styles['menu-list']} ${location.pathname === appPage.url ? 'selected' : ''}`} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
+                <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
+                <IonLabel>{appPage.title}</IonLabel>
+              </IonItem>
             </IonMenuToggle>
-            </IonList>
           ))}
         </IonList>
       </IonContent>

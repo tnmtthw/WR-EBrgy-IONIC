@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonBackButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 
 const Document: React.FC = () => {
@@ -34,9 +34,9 @@ const Document: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            <IonBackButton defaultHref="/Home" text="Home"></IonBackButton>
           </IonButtons>
-          <IonTitle>Document</IonTitle>
+          <IonTitle>DOCUMENT</IonTitle>
         </IonToolbar>
       </IonHeader>
 
