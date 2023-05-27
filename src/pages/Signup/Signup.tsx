@@ -4,6 +4,8 @@ import { IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, I
 import { useHistory } from 'react-router-dom';
 import './Signup.css';
 import { useForm } from 'react-hook-form';
+import styles from './Signup.module.css';
+import { caretBack } from 'ionicons/icons';
 
 const Signup: React.FC = () => {
   const { handleSubmit } = useForm();
@@ -87,7 +89,7 @@ const Signup: React.FC = () => {
   };
 
   const handleButtonClick = () => {
-    history.push('/login');
+    history.push('/Login');
   };
 
   return (
@@ -97,8 +99,8 @@ const Signup: React.FC = () => {
           <img src='src/assets/img/Logo.png' alt="Logo" className="logo" />
         </div>
         <IonCard>
+        <IonBackButton icon={caretBack} className={styles.BackButton} defaultHref="/" text="Back"></IonBackButton>   
           <IonCardContent>
-          <IonBackButton defaultHref="/" text=""></IonBackButton>
             <h1>Register</h1>
             <h2>Create an Account</h2>
             <form onSubmit={handleSubmit(signup)}>

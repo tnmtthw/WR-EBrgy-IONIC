@@ -20,6 +20,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import styles from './Login.module.css';
 import { useForm } from 'react-hook-form';
+import { caretBack } from 'ionicons/icons';
 
 const Login: React.FC = () => {
   const { handleSubmit } = useForm();
@@ -99,7 +100,7 @@ const Login: React.FC = () => {
         </div>
         <div className="container">
           <IonCard>     
-          <IonBackButton className={styles.BackButton} defaultHref="/" text="Back"></IonBackButton>   
+          <IonBackButton icon={caretBack} className={styles.BackButton} defaultHref="/" text="Back"></IonBackButton>   
             <IonCardContent> 
               <h1>LOGIN</h1>
               <form onSubmit={handleSubmit(login)}>

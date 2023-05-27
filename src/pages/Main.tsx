@@ -7,7 +7,7 @@ const Main: React.FC = () => {
   const history = useHistory();
 
   const handleButtonClick1 = () => {
-    history.push('/login');
+    history.push('/Login');
   };
 
   const handleButtonClick2 = () => {
