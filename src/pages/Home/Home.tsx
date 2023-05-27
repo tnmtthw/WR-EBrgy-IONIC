@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/react';
+import { IonButtons,IonAvatar, IonContent, IonHeader, IonBackButton, IonSearchbar, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import './Home.module.css';
+import styles from './Home.module.css';
+import { IonCol, IonGrid, IonRow } from '@ionic/react';
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -27,18 +29,20 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>DASHBOARD</IonTitle>
+      
+      <IonToolbar className={styles.Toolbar}>
+          <div className={styles.ToolbarContent}>
+          <IonBackButton className={styles.BackButton} defaultHref="/" text=""></IonBackButton>
+            <IonSearchbar className={styles.Search}></IonSearchbar>
+            <IonMenuButton className={styles.Menu}></IonMenuButton>
+          </div>
         </IonToolbar>
-      </IonHeader>
-
+        
       <IonContent className="ion-padding">
+      <IonAvatar className={styles.avatar}>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </IonAvatar>
         <h1>Welcome, {firstName}!</h1>
-
         <IonCard onClick={goToProfilePage} style={{ backgroundColor: '#C79C0E' }}>
           <IonCardHeader>
             <div className="logo-container2">
@@ -48,7 +52,9 @@ const Home: React.FC = () => {
               <h1>Profile</h1>
             </div>
           </IonCardHeader>
+          
         </IonCard>
+        
 
         <IonCard onClick={goToDocumentPage} style={{ backgroundColor: '#C79C0E' }}>
           <IonCardHeader>
@@ -70,6 +76,7 @@ const Home: React.FC = () => {
             Access and update your profile information.
           </IonCardContent>
         </IonCard>
+       
       </IonContent>
     </IonPage>
   );

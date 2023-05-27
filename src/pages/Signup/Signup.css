@@ -61,6 +61,7 @@ ion-card-content {
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
+  padding-top: 20px;
 }
 
 .btn1 {

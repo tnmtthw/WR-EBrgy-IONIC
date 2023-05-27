@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { IonHeader, IonSearchbar, IonTitle, IonToolbar,IonButtons,IonMenuButton } from '@ionic/react';
+import { IonAvatar } from '@ionic/react';
 import {
   IonContent,
   IonInput,
@@ -8,7 +10,11 @@ import {
   IonCard,
   IonCardContent,
   IonLoading,
-  IonBackButton
+  IonBackButton,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle
+  
 } from '@ionic/react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -88,13 +94,13 @@ const Login: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="ion-padding">
-        <div className="logo-container">
-          <img src="src/assets/img/Logo.png" alt="Logo" className="logo" />
+      <div className="logo-container">
+          <img src='src/assets/img/Logo.png' alt="Logo" className="logo" />
         </div>
         <div className="container">
-          <IonCard>
-            <IonCardContent>
-            <IonBackButton defaultHref="/" text=""></IonBackButton>
+          <IonCard>     
+          <IonBackButton className={styles.BackButton} defaultHref="/" text="Back"></IonBackButton>   
+            <IonCardContent> 
               <h1>LOGIN</h1>
               <form onSubmit={handleSubmit(login)}>
               <IonInput
@@ -106,7 +112,6 @@ const Login: React.FC = () => {
                 onIonChange={(e) => setEmail(e.detail.value!)}
                 className="custom-input" // Apply the custom class here
               ></IonInput>
-
               <IonInput
                 label="Password"
                 type="password"
@@ -125,7 +130,9 @@ const Login: React.FC = () => {
               </form>
             </IonCardContent>
           </IonCard>
+          
         </div>
+        
       </IonContent>
       <IonLoading
         isOpen={isLoading}
@@ -139,8 +146,22 @@ const Login: React.FC = () => {
         duration={3000}
         onDidDismiss={() => setShowToast(false)}
       />
+  
     </IonPage>
   );
 };
 
 export default Login;
+
+ function Example() {
+      return (
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Toolbar</IonTitle>
+          </IonToolbar>
+          <IonToolbar>
+            <IonSearchbar></IonSearchbar>
+          </IonToolbar>
+        </IonHeader>
+      );
+    }
