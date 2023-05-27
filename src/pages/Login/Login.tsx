@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { IonHeader, IonSearchbar, IonTitle, IonToolbar,IonButtons,IonMenuButton } from '@ionic/react';
-import { IonAvatar } from '@ionic/react';
+import { IonIcon, IonHeader, IonSearchbar, IonTitle, IonToolbar,IonButtons,IonMenuButton } from '@ionic/react';
+import { mailOutline, lockClosedOutline } from 'ionicons/icons';
 import {
   IonContent,
   IonInput,
@@ -14,7 +14,6 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle
-  
 } from '@ionic/react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -111,8 +110,10 @@ const Login: React.FC = () => {
                 labelPlacement="floating"
                 placeholder="Enter Email"
                 onIonChange={(e) => setEmail(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              ></IonInput>
+                className={`${styles['custom-input']} custom-input`}
+              >
+                <IonIcon slot="start" icon={mailOutline} />
+              </IonInput>
               <IonInput
                 label="Password"
                 type="password"
@@ -120,9 +121,10 @@ const Login: React.FC = () => {
                 value={password}
                 labelPlacement="floating"
                 onIonChange={(e) => setPassword(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              ></IonInput>
-
+                className={`${styles['custom-input']} custom-input`}
+              >
+                <IonIcon slot="start" icon={lockClosedOutline} />
+              </IonInput>
               <div className="button-container">
                 <button type="submit" className="btn1">
                   Submit

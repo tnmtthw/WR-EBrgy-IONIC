@@ -32,6 +32,15 @@
   .ToolbarContent {
     display: flex;
     align-items: center;
-   
-    
   }
+
+/* login.module.css */
+.custom-input {
+  display: flex;
+  align-items: center;
+}
+
+.custom-input ion-icon {
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -68,19 +68,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  
- 
 }
 
 .ToolbarContent {
   display: flex;
   align-items: center;
+}
 
-  
+.avatarContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
-.avatar{
-  background:aliceblue;
-  float: right;
-  margin-right: 20px;
+
+.avatarLabel {
+  margin-right: 5px;
 }
+
+.avatar {
+  background: aliceblue;
+}
+
+

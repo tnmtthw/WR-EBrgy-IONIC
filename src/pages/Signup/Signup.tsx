@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonToast, IonCard, IonCardContent, IonLoading, IonBackButton } from '@ionic/react';
+import { IonItem, IonLabel, IonRadio, IonRadioGroup, IonIcon, IonContent, IonPage, IonInput, IonButton, IonSelect, IonSelectOption, IonToast, IonCard, IonCardContent, IonLoading, IonBackButton } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import './Signup.css';
 import { useForm } from 'react-hook-form';
 import styles from './Signup.module.css';
-import { caretBack } from 'ionicons/icons';
+import { caretBack, personOutline, mailOutline, callOutline, calendarOutline, maleOutline, femaleOutline, transgenderOutline, homeOutline, mapOutline, locationOutline, lockClosedOutline, womanOutline, male } from 'ionicons/icons';
 
 const Signup: React.FC = () => {
   const { handleSubmit } = useForm();
@@ -110,24 +110,30 @@ const Signup: React.FC = () => {
                 value={firstName}
                 labelPlacement="floating"
                 onIonChange={(e) => setFirstName(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
+                className={`${styles['custom-input']} custom-input`}
+              >
+                <IonIcon slot="start" icon={personOutline} />
+              </IonInput>
               <IonInput
                 label="Lastname"
                 placeholder="Lastname"
                 value={lastName}
                 labelPlacement="floating"
                 onIonChange={(e) => setLastName(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
+                className={`${styles['custom-input']} custom-input`}
+              >
+                <IonIcon slot="start" icon={personOutline} />
+              </IonInput>
               <IonInput
                 label="Email"
                 placeholder="Email"
                 value={email}
                 labelPlacement="floating"
                 onIonChange={(e) => setEmail(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
+                className={`${styles['custom-input']} custom-input`}
+              >
+                <IonIcon slot="start" icon={mailOutline} />
+              </IonInput>
               <IonInput
                 label="Contact"
                 type="tel"
@@ -135,64 +141,83 @@ const Signup: React.FC = () => {
                 value={contactNumber}
                 labelPlacement="floating"
                 onIonChange={(e) => setContactNumber(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
+                className={`${styles['custom-input']} custom-input`}
+              >
+                <IonIcon slot="start" icon={callOutline} />
+              </IonInput>
               <IonInput
                 label="Birthday"
-                placeholder="Month DD, YYYY"
+                type="date"
                 value={birthdate}
                 labelPlacement="floating"
                 onIonChange={(e) => setBirthdate(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
-              <IonSelect
-                justify='start'
-                label="Gender"
-                placeholder="Select Gender"
-                value={gender}
-                labelPlacement="floating"
-                onIonChange={(e) => setGender(e.detail.value)}
-                className="custom-input" // Apply the custom class here
+                className={`${styles['custom-input']} custom-input`}
               >
-                <IonSelectOption value="Male">Male</IonSelectOption>
-                <IonSelectOption value="Female">Female</IonSelectOption>
-                <IonSelectOption value="LGBT+">LGBT+</IonSelectOption>
-              </IonSelect>
-              <h3>Address</h3>
-              <IonInput
-                label="House Number"
-                placeholder="House Number"
-                value={houseNumber}
-                labelPlacement="floating"
-                onIonChange={(e) => setHouseNumber(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
-              <IonInput
-                label="Street Name"
-                placeholder="Street Name"
-                value={streetNumber}
-                labelPlacement="floating"
-                onIonChange={(e) => setStreetNumber(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
-              <IonInput
-                label="Sitio"
-                placeholder="Sitio"
-                value={sitio}
-                labelPlacement="floating"
-                onIonChange={(e) => setSitio(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
+                <IonIcon slot="start" icon={calendarOutline} />
+              </IonInput>
+              <IonRadioGroup value={gender} onIonChange={(e) => setGender(e.detail.value)}>
+              <IonItem>
+                <IonIcon icon={maleOutline} slot="start" />
+                <IonLabel>Male</IonLabel>
+                <IonRadio slot="end" value="Male" />
+              </IonItem>
+
+              <IonItem>
+                <IonIcon icon={womanOutline} slot="start" />
+                <IonLabel>Female</IonLabel>
+                <IonRadio slot="end" value="Female" />
+              </IonItem>
+
+              <IonItem>
+                <IonIcon icon={transgenderOutline} slot="start" />
+                <IonLabel>LGBT+</IonLabel>
+                <IonRadio slot="end" value="LGBT+" />
+              </IonItem>
+            </IonRadioGroup>
+            <h3>Address</h3>
+            <IonInput
+              label="House Number"
+              placeholder="House Number"
+              value={houseNumber}
+              labelPlacement="floating"
+              onIonChange={(e) => setHouseNumber(e.detail.value!)}
+              className={`${styles['custom-input']} custom-input`}
+            >
+              <IonIcon slot="start" icon={homeOutline} />
+            </IonInput>
+            <IonInput
+              label="Street Name"
+              placeholder="Street Name"
+              value={streetNumber}
+              labelPlacement="floating"
+              onIonChange={(e) => setStreetNumber(e.detail.value!)}
+              className={`${styles['custom-input']} custom-input`}
+            >
+              <IonIcon slot="start" icon={mapOutline} />
+            </IonInput>
+            <IonInput
+              label="Sitio"
+              type="number"
+              placeholder="Sitio"
+              value={sitio}
+              labelPlacement="floating"
+              onIonChange={(e) => setSitio(e.detail.value!)}
+              className={`${styles['custom-input']} custom-input`}
+            >
+              <IonIcon slot="start" icon={locationOutline} />
+            </IonInput>
               <h3>Create Password</h3>
-              <IonInput
-                label="Password"
-                type="password"
-                placeholder="Password"
-                value={password}
-                labelPlacement="floating"
-                onIonChange={(e) => setPassword(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              />
+            <IonInput
+              label="Password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              labelPlacement="floating"
+              onIonChange={(e) => setPassword(e.detail.value!)}
+              className={`${styles['custom-input']} custom-input`}
+            >
+              <IonIcon slot="start" icon={lockClosedOutline} />
+            </IonInput>
               <div className="button-container">
                 <button type="submit" className="btn1">
                   Submit
