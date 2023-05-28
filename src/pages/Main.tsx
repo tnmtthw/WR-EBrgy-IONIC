@@ -7,11 +7,11 @@ const Main: React.FC = () => {
   const history = useHistory();
 
   const handleButtonClick1 = () => {
-    history.push('/Login');
+    history.push('/login');
   };
 
   const handleButtonClick2 = () => {
-    history.push('/Signup');
+    history.push('/signup');
   };
 
   return (
@@ -22,7 +22,7 @@ const Main: React.FC = () => {
             <source src="src/assets/video/makati25blur.mp4" type="video/mp4" />
           </video>
           <div className={styles.photoContainer}>
-            <img src="src/assets/img/Logo.png" alt="Logo" className={styles.logo} />
+            <img src="src/assets/img/wrlogo.png" alt="Logo" className={styles.logo} />
           </div>
         </div>
         <div className={styles.buttonContainer}>

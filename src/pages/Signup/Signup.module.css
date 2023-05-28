@@ -1,4 +1,9 @@
-.BackButton {
+.cardContentContainer{
+  padding-top: 50px;
+  /* padding-bottom: 100px; */
+}
+
+.backButton {
     position: absolute;
     top: 0;
     left: 0;
@@ -21,4 +26,11 @@
 .custom-input ion-icon {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.customRadio {
+  border-radius: 8px;
+  font-size:15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
 }
