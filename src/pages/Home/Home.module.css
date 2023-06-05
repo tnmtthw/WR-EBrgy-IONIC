@@ -16,13 +16,8 @@
    max-height: 100%;
    margin-left: 90px;
  }
- 
- .header h1 {
-   color: white;
-   font-size: 20px;
-   text-transform: uppercase;
- }
- 
+
+
  .button1 button {
    height: 40px;
    align-items: center;
@@ -36,10 +31,7 @@
    text-transform: uppercase;
    border-radius: 10px;
  }
- 
- .IonCard {
-   background-color: white;
- } 
+
 
  .BackButton {
   position: absolute;
@@ -90,3 +82,14 @@
 }
 
 
+ion-col {
+  background-color: none;
+  border: none;
+  color: #fff;
+  text-align: center;
+  height: 220px;
+}
+.IonButton{
+
+  background: blue;
+}
