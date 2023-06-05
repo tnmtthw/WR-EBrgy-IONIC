@@ -44,28 +44,29 @@ const Home: React.FC = () => {
         {/* HEADER */}
 
 
-      <IonContent className="ion-padding">
-              <div className='News'style={{ color: 'black' ,
-                            textAlign: 'center',
-                            paddingTop:'5px', 
-                            paddingBottom:'0px',
-                            textTransform:'uppercase',
-                            width:'345px',
-                            // background:'#FFC300',
-                            marginTop:'0px',
-                            marginLeft:'5px'
-                            }}  >
+          <IonContent className="ion-padding">
+                  <div className='News'style={{ color: 'black' ,
+                                textAlign: 'center',
+                                paddingTop:'5px', 
+                                paddingBottom:'0px',
+                                textTransform:'uppercase',
+                                width:'345px',
+                                // background:'#FFC300',
+                                marginTop:'0px',
+                                marginLeft:'5px'
+                                }}  >
 
-            <h1 style={{ fontWeight: 'bold',
-                            fontSize:'20px',
-                            color:'#001D3D'}}>
-                            SERVICES</h1>
-                            </div>
+                <h1 style={{ fontWeight: 'bold',
+                                fontSize:'20px',
+                                color:'#001D3D'}}>
+                                SERVICES</h1>
+                                </div>
 
                             
-              {/* END HEADER */}
+         {/* END HEADER */}
 
-
+     {/* CONTENT PAGE*/}
+    
               <IonGrid>
                 <IonRow>
                   <IonCol size="6" size-md="4" size-lg="2">
@@ -193,6 +194,7 @@ const Home: React.FC = () => {
                     </IonCol>
                 </IonRow>
               </IonGrid>
+         <div className="content"style={{background: '#F8F7F0',width:'120%',marginLeft:'-20px',}}>
 
               <div className='News'style={{ color: 'black' ,
                               textAlign: 'center',
@@ -202,7 +204,7 @@ const Home: React.FC = () => {
                               width:'345px',
                               // background:'#FFC300',
                               marginTop:'20px',
-                              marginLeft:'5px'
+                              marginLeft:'25px'
                               }}  >
 
               <h1 style={{ fontWeight: 'bold',
@@ -211,7 +213,8 @@ const Home: React.FC = () => {
                               News and Announcements</h1>
                               </div>
                               
-              <IonCard style={{ width: '340px',marginLeft:'9px'}} >
+              <IonCard style={{ width: '340px',
+                              marginLeft:'28px'}} >
             
               <img alt="Silhouette of mountains" src='src/assets/img/vote.png' className="news"  />
 
@@ -220,7 +223,7 @@ const Home: React.FC = () => {
                           <IonCardSubtitle>Vote Wisely in</IonCardSubtitle>
                 </IonCardHeader>
 
-                          <IonCardContent style={{ color: 'white', textAlign: 'justify', paddingTop:'20px' ,background:'#024AA2'}} 
+                          <IonCardContent style={{ color: 'white', textAlign: 'justify', paddingTop:'20px' ,background:'#024AA2',width:'100%'}} 
                             
                             >The BSKE polls were initially scheduled for December 5, 2022 before it was moved to October 30, 2023.
                               Based on the calendar of activities released by the Comelec, the election period will begin on July 3 
@@ -235,19 +238,20 @@ const Home: React.FC = () => {
                         style={{ 
                           color: 'white', 
                           width:'150px',
-                          marginLeft:'25%',}}
+                          marginLeft:'28%',}}
                           >Read More</IonButton>
 
-            <IonCard style={{ width: '340px',marginLeft:'9px'}} >
-                  <img alt="Silhouette of mountains" src='src/assets/img/cleanup.jpg' className="news"  />
-                      <IonCardHeader>
+              <IonCard style={{ width: '340px',
+                              marginLeft:'28px'}} >
+                    <img alt="Silhouette of mountains" src='src/assets/img/cleanup.jpg' className="news"  />
+                        <IonCardHeader>
 
-                        <IonCardTitle>Clean and Green</IonCardTitle>
-                        <IonCardSubtitle>Be responsible</IonCardSubtitle>
+                          <IonCardTitle>Clean and Green</IonCardTitle>
+                          <IonCardSubtitle>Be responsible</IonCardSubtitle>
 
-          </IonCardHeader>
+            </IonCardHeader>
 
-                <IonCardContent style={{ color: 'white', textAlign: 'justify', paddingTop:'20px' ,background:'#024AA2'}} 
+                <IonCardContent style={{ color: 'white', textAlign: 'justify', paddingTop:'20px' ,background:'#024AA2',width:'100%'}} 
                     >What Is a Community Cleanup? A community cleanup brings volunteers together to clean, repair, 
                     and improve public spaces or other areas such as vacant lots or abandoned properties
                     that have been neglected, vandalized, or misused.
@@ -257,12 +261,14 @@ const Home: React.FC = () => {
                   <IonButton style={{
                       color: 'white', 
                       width:'150px',
-                      marginLeft:'25%'}}
+                      marginLeft:'28%'}}
             > Read More </IonButton>
-      
-        </IonContent>
- </IonPage>
+      </div>
+          </IonContent>
+    {/* END CONTENT PAGE*/}
     
+ </IonPage>
+     
     
   );
 };
