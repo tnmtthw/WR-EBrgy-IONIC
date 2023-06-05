@@ -95,7 +95,7 @@ const Menu: React.FC = () => {
   }, []);
 
   return (
-    <IonMenu contentId="main" type="overlay">
+    <IonMenu side="end" contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list" className={styles['menu-list']} style={{ backgroundColor: '#FFC300' }}>
           <div className="logo-container">

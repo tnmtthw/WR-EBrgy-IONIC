@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IonButtons,IonAvatar, IonContent, IonHeader, IonBackButton, IonSearchbar, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/react';
+import { IonButtons,IonAvatar, IonContent, IonHeader, IonBackButton, IonSearchbar, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonLabel } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import './Home.module.css';
 import styles from './Home.module.css';
@@ -39,10 +39,13 @@ const Home: React.FC = () => {
         </IonToolbar>
         
       <IonContent className="ion-padding">
-      <IonAvatar className={styles.avatar}>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </IonAvatar>
-        <h1>Welcome, {firstName}!</h1>
+        <div className={styles.avatarContainer}>
+          <IonLabel className={styles.avatarLabel}>Fortune Tamares</IonLabel>
+          <IonAvatar className={styles.avatar}>
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </IonAvatar>
+        </div>
+        {/* <h1>Welcome, {firstName}!</h1> */}
         <IonCard onClick={goToProfilePage} style={{ backgroundColor: '#C79C0E' }}>
           <IonCardHeader>
             <div className="logo-container2">

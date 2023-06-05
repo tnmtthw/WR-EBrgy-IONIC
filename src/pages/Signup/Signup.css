@@ -1,31 +1,31 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70%;
-  }  
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
 
 ion-content {
-    --background: none;
-    /* background-image: url('src/assets/img/login-bg.jpg'); */
-    background: linear-gradient(154.02deg, #FCEBB4 30.91%, #003566 105.2%);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  --background: none;
+  /* background-image: url('src/assets/img/login-bg.jpg'); */
+  background: linear-gradient(154.02deg, #FCEBB4 30.91%, #003566 105.2%);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
  
 input-label-placement-floating.sc-ion-input-ios-h, .input-label-placement-stacked.sc-ion-input-ios-h {
-    min-height: 56px;
-    background-color: white;
+  min-height: 56px;
+  background-color: white;
 }
+
 .text-center {
   text-align: center;
-  
 }
+
 .text-center p {
   color:white;
-  
 }
 
 ion-card-content {
@@ -35,23 +35,34 @@ ion-card-content {
   background: rgba(17, 68, 124, 0.8);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust the shadow properties as needed */
 }
-        ion-card-content h3 {
-        color:White;
-        padding-bottom: 20px;
-        padding-left: 10px;
-        }
-        ion-card-content h2 {
-            color:White;
-            padding-bottom: 20px;
-            padding-left: 10px;
-            text-transform: uppercase;
-            padding-top: 20px;
-            }
-  
-  
+ion-card-content h3 {
+color:White;
+padding-bottom: 10px;
+padding-left: 10px;
+}
 
+ion-card-content h2 {
+color:White;
+padding-bottom: 20px;
+padding-left: 10px;
+text-transform: uppercase;
+padding-top: 20px;
+}
 
 .card-content-ios h1 {
+  color:white;
+  margin-left: 0;
+  margin-right: 0;
+  /* margin-top: 0; */
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 20px;
+}
+
+.card-content-md h1 {
   color:white;
   margin-left: 0;
   margin-right: 0;
@@ -92,7 +103,7 @@ ion-card-content {
 .custom-input {
   background:white; /* Background color */
    /* Padding top */
-  height: 20px;
+  /* height: 20px; */
   /* Padding bottom */
   color: black; /* Text color */
   border-radius: 8px; /* Border radius */

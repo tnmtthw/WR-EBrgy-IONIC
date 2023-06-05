@@ -5,6 +5,7 @@ import Menu from './components/Menu';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
+import SignupSuccess from './pages/Signup/SignupSuccess';
 import Profile from './pages/Profile/Profile';
 import Document from './pages/Document/Document';
 import Docu1_BarangayID from './pages/Document/Docu1_BarangayID';
@@ -41,6 +42,7 @@ const App: React.FC = () => (
           <Route exact path="/main" component={Main} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/signupsuccess" component={SignupSuccess} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/document" component={Document} />

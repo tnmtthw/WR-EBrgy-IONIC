@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
-import { IonHeader, IonSearchbar, IonTitle, IonToolbar,IonButtons,IonMenuButton } from '@ionic/react';
-import { IonAvatar } from '@ionic/react';
+import { IonIcon, IonHeader, IonSearchbar, IonTitle, IonToolbar,IonButton, } from '@ionic/react';
+import { mailOutline, lockClosedOutline, caretBack } from 'ionicons/icons';
 import {
   IonContent,
   IonInput,
-  IonText,
   IonPage,
   IonToast,
   IonCard,
   IonCardContent,
   IonLoading,
   IonBackButton,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle
-  
 } from '@ionic/react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -74,7 +69,7 @@ const Login: React.FC = () => {
       setEmail('');
       setPassword('');
       // Navigate to the desired page
-      history.push('/Home');
+      history.push('/home');
 
       // Show success toast message
       setToastMessage('Login successful');
@@ -91,6 +86,10 @@ const Login: React.FC = () => {
     }
   };
 
+  const handleBack = () => {
+    history.push('/main');
+  };
+
   return (
     <IonPage>
       <IonContent className="ion-padding">
@@ -99,40 +98,45 @@ const Login: React.FC = () => {
         </div>
         <div className="container">
           <IonCard>     
-          <IonBackButton className={styles.BackButton} defaultHref="/" text="Back"></IonBackButton>   
-            <IonCardContent> 
-              <h1>LOGIN</h1>
+          <IonBackButton icon={caretBack} className={styles.backButton} onClick={handleBack} text="Back"></IonBackButton>   
+            <IonCardContent className={styles.cardContentContainer} > 
+              {/* <h1>LOGIN</h1> */}
               <form onSubmit={handleSubmit(login)}>
               <IonInput
                 label="Email"
                 type="email"
                 value={email}
                 labelPlacement="floating"
-                placeholder="Enter Email"
+                // placeholder="Enter Email"
                 onIonChange={(e) => setEmail(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              ></IonInput>
+                className={`${styles['custom-input']} custom-input`}
+              >
+                <IonIcon slot="start" icon={mailOutline} />
+              </IonInput>
               <IonInput
                 label="Password"
                 type="password"
-                placeholder="Enter Password"
+                // placeholder="Enter Password"
                 value={password}
                 labelPlacement="floating"
                 onIonChange={(e) => setPassword(e.detail.value!)}
-                className="custom-input" // Apply the custom class here
-              ></IonInput>
-
-              <div className="button-container">
-                <button type="submit" className="btn1">
-                  Submit
-                </button>
-              </div>
+                className={`${styles['custom-input']} custom-input`}
+              >
+                <IonIcon slot="start" icon={lockClosedOutline} />
+              </IonInput>
+              <IonButton type ="submit" shape="round" expand="block">Log in</IonButton>
+              {/* // <div className="button-container">
+              //   <button type="submit" className="btn1">
+              //     LOGIN
+              //   </button>
+              // </div> */}
               </form>
+              <div className="text-center">
+                <p>Forget password?</p>
+              </div>
             </IonCardContent>
           </IonCard>
-          
         </div>
-        
       </IonContent>
       <IonLoading
         isOpen={isLoading}

@@ -16,28 +16,8 @@
     /* background: blue;
     border-radius: 5px; */
   }
-  .Search{
-    margin-top: 10px;
-    margin-left: 20px;
-  }
 
- .MenuContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  .Toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .ToolbarContent {
-    display: flex;
-    align-items: center;
-  }
-
-/* login.module.css */
+  /* login.module.css */
 .custom-input {
   display: flex;
   align-items: center;
@@ -46,4 +26,11 @@
 .custom-input ion-icon {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.customRadio {
+  border-radius: 8px;
+  font-size:15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
 }
